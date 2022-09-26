@@ -16,6 +16,9 @@ const redirectUrl = params.get('redirectUrl') || '../';
 //      - get the user
 //      - replace location with redirectUrl
 
+const user = getUser();
+if (user) location.replace(redirectUrl);
+
 // Sign up options
 const signUpType = {
     header: 'Create a new account',
