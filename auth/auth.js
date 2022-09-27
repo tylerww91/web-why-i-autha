@@ -16,6 +16,9 @@ const redirectUrl = params.get('redirectUrl') || '../';
 //      - get the user
 //      - replace location with redirectUrl
 
+const user = getUser();
+if (user) location.replace(redirectUrl);
+
 // Sign up options
 const signUpType = {
     header: 'Create a new account',
@@ -74,6 +77,8 @@ authForm.addEventListener('submit', async (e) => {
     //      - call "authType.action" passing in the email and password from
     //        the form data and assign to response variable
 
+    const formData = new FormData(authForm);
+    const response = await authType.action(formData.get('email'), formData.get('password'));
     const error = response.error;
 
     if (error) {
@@ -84,5 +89,6 @@ authForm.addEventListener('submit', async (e) => {
     } else {
         // go back to wherever user came from
         // > Part A using "location", replace url with "redirectUrl"
+        location.replace(redirectUrl);
     }
 });
