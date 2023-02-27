@@ -9,7 +9,7 @@ const signOutLink = document.getElementById('sign-out-link');
 //       redirect code: location.replace(`/auth/?redirectUrl=${encodeURIComponent(location)}`);
 
 const user = getUser();
-console.log(user);
+
 if (!user) {
     const base = location.pathname === '/' ? './' : '../';
     location.replace(`${base}auth/?redirectUrl=${encodeURIComponent(location)}`);
